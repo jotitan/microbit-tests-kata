@@ -10,3 +10,15 @@ function showKO(){
 }
 
 showKO()
+
+function checkTest1(){
+
+}
+
+function checkTest2() {
+
+}
+
+function checkTest3() {
+
+}
