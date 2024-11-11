@@ -9,18 +9,55 @@ function showKO(){
     basic.showIcon(IconNames.Sad)
 }
 
-
-function checkTest1(){
-    showOK()
+interface Test{
+    getInput(): int16[][]
+    check(input: int16[][]): boolean
+    input: int16[][]
 }
 
-function checkTest2() {
-    showOK()
+//mirror left = right
+class Test1 implements Test{
+    input: int16[][]
+
+    getInput(): int16[][]{
+        this.input = [
+            [1, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0],
+            [0, 0, 1, 0, 0],
+            [0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 1]
+        ]
+        return this.input
+    }
+
+    check(input: int16[][]):boolean{
+        return compare([
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 1, 0],
+            [0, 0, 1, 0, 0],
+            [0, 1, 0, 0, 0],
+            [1, 0, 0, 0, 0]
+        ], input);
+    }
 }
 
-function checkTest3() {
-    showOK()
+function compare(t1: int16[][], t2: int16[][]):boolean{
+    if (t1.length !== t2.length){
+        return false;
+    }
+    for (let i = 0 ; i < t1.length ; i++){
+        if(t1[i].length !== t2[i].length){
+            return false;
+        }
+        for (let j = 0; j < t1[i].length; j++) {
+            if(t1[i][j] !== t2[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
+
 
 let direction = 10;
 let brightness = 100;
