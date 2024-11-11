@@ -41,6 +41,14 @@ class Test1 implements Test{
     }
 }
 
+function checkTest(tester:Test, data :int16[][]){
+    if(tester.check(data)){
+        showOK()
+    }else{
+        showKO()
+    }
+}
+
 function compare(t1: int16[][], t2: int16[][]):boolean{
     if (t1.length !== t2.length){
         return false;
