@@ -1,5 +1,5 @@
 {
-    "name": "Tet import",
+    "name": "Kata tests",
     "description": "",
     "dependencies": {
         "core": "*",
