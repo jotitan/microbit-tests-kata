@@ -1,22 +1,37 @@
 
 > Ouvrir cette page à [https://jotitan.github.io/microbit-tests-kata/](https://jotitan.github.io/microbit-tests-kata/)
 
-## Utiliser comme extension
+## Exercices
 
-Ce dépôt peut être ajouté en tant qu'**extension** dans MakeCode.
+Voici une liste de kata pour s'entrainer à utiliser une carte [microbit](https://makecode.microbit.org/)
 
+### Exercice préliminaire
+
+L'objectif est de configurer la carte pour lancer les tests par la suite : 
+* Ajouter une fonction pour incrémenter un compteur (tournant) de 1 à 9 lorsqu'on appuie sur le logo
+La valeur du compteur est affichée sur l'écran
+* Lors de l'appuie sur le bouton A, afficher OK {compteur}
+* Lors de l'appuie sur le bouton B, afficher Test {compteur}
+
+### Connecter les tests
+
+Pour les lancer les tests, vous devez ajouter ce dépot en extension : 
 * ouvrir [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * cliquez sur **Nouveau projet**
 * cliquez sur **Extensions** dans le menu engrenage
 * recherchez **https://github.com/jotitan/microbit-tests-kata** et importez
 
-## Éditer ce projet
+### Fonctionnement
 
-Éditer ce dépôt dans MakeCode.
+### Exercice 1 : le miroir
 
-* ouvrir [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* cliquez sur **Importer** puis cliquez sur **Importer l'URL **
-* collez **https://github.com/jotitan/microbit-tests-kata** et cliquez sur importer
+
+
+
+
+
+
+
 
 #### Métadonnées (utilisées pour la recherche, le rendu)
 
