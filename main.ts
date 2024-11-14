@@ -1,21 +1,39 @@
-
-
-
-function showOK(){
+function compare (t1: any[], t2: any[]) {
+    if (t1.length != t2.length) {
+        return false
+    }
+    for (let i = 0; i <= t1.length - 1; i++) {
+        if (t1[i].length != t2[i].length) {
+            return false
+        }
+        for (let j = 0; j <= t1[i].length - 1; j++) {
+            if (t1[i][j] != t2[i][j]) {
+                return false
+            }
+        }
+    }
+    return true
+}
+function showOK () {
     basic.showIcon(IconNames.Happy)
 }
-
-function showKO(){
+function pulseBright () {
+    if (direction == 10 && brightness > 255 || direction == -10 && brightness < 10) {
+        direction *= -1;
+    }
+    brightness += direction
+    led.setBrightness(brightness)
+}
+function showKO () {
     basic.showIcon(IconNames.Sad)
 }
-
+let brightness = 0
+let direction = 0
 interface Test{
     getInput(): int16[][]
     check(input: int16[][]): boolean
     input: int16[][]
 }
-
-//mirror left = right
 class Test1 implements Test{
     input: int16[][]
 
@@ -40,7 +58,6 @@ class Test1 implements Test{
         ], input);
     }
 }
-
 function checkTest(tester:Test, data :int16[][]){
     if(tester.check(data)){
         showOK()
@@ -48,34 +65,6 @@ function checkTest(tester:Test, data :int16[][]){
         showKO()
     }
 }
-
-function compare(t1: int16[][], t2: int16[][]):boolean{
-    if (t1.length !== t2.length){
-        return false;
-    }
-    for (let i = 0 ; i < t1.length ; i++){
-        if(t1[i].length !== t2[i].length){
-            return false;
-        }
-        for (let j = 0; j < t1[i].length; j++) {
-            if(t1[i][j] !== t2[i][j]) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-
-let direction = 10;
-let brightness = 100;
-
-function pulseBright() {
-    if ((direction === 10 && brightness > 255) || (direction === -10 && brightness < 10)) {
-        direction *= -1;
-    }
-    brightness += direction;
-    led.setBrightness(brightness);
-}
-
-pulseBright();
+direction = 10
+brightness = 100
+pulseBright()
