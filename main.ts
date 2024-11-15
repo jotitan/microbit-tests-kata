@@ -29,12 +29,12 @@ function showKO () {
 }
 let brightness = 0
 let direction = 0
-interface Test{
+interface Test<Result>{
     getInput(): int16[][]
-    check(input: int16[][]): boolean
+    check(result: Result): boolean
     input: int16[][]
 }
-class Test1 implements Test{
+class Test1 implements Test<int16[][]>{
     input: int16[][]
 
     getInput(): int16[][]{
@@ -48,17 +48,37 @@ class Test1 implements Test{
         return this.input
     }
 
-    check(input: int16[][]):boolean{
+    check(result: int16[][]):boolean{
         return compare([
             [0, 0, 0, 0, 1],
             [0, 0, 0, 1, 0],
             [0, 0, 1, 0, 0],
             [0, 1, 0, 0, 0],
             [1, 0, 0, 0, 0]
-        ], input);
+        ], result);
     }
 }
-function checkTest(tester:Test, data :int16[][]){
+
+class Test2 implements Test<number> {
+    input: int16[][]
+
+    getInput(): int16[][] {
+        this.input = [
+            [1, 3, 5, 7, 1],
+            [4, 1, 0, 5, 0],
+            [1, 0, 1, 0, 1],
+            [8, 0, 2, 1, 0],
+            [4, 0, 4, 0, 1]
+        ]
+        return this.input
+    }
+
+    check(result: number): boolean {
+        return 50 === result;
+    }
+}
+
+function checkTest(tester:Test<any>, data :any){
     if(tester.check(data)){
         showOK()
     }else{
