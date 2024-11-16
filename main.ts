@@ -1,4 +1,4 @@
-function compare (t1: any[], t2: any[]) {
+function compare (t1: any[][], t2: any[][]) {
     if (t1.length != t2.length) {
         return false
     }
