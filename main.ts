@@ -30,14 +30,14 @@ function showKO () {
 let brightness = 0
 let direction = 0
 interface Test<Result>{
-    getInput(): int16[][]
+    getInput(): number[][]
     check(result: Result): boolean
-    input: int16[][]
+    input: number[][]
 }
-class Test1 implements Test<int16[][]>{
-    input: int16[][]
+class Test1 implements Test<number[][]>{
+    input: number[][]
 
-    getInput(): int16[][]{
+    getInput(): number[][]{
         this.input = [
             [1, 0, 0, 0, 0],
             [0, 1, 0, 0, 0],
@@ -48,7 +48,7 @@ class Test1 implements Test<int16[][]>{
         return this.input
     }
 
-    check(result: int16[][]):boolean{
+    check(result: number[][]):boolean{
         return compare([
             [0, 0, 0, 0, 1],
             [0, 0, 0, 1, 0],
@@ -60,9 +60,9 @@ class Test1 implements Test<int16[][]>{
 }
 
 class Test2 implements Test<number> {
-    input: int16[][]
+    input: number[][]
 
-    getInput(): int16[][] {
+    getInput(): number[][] {
         this.input = [
             [1, 3, 5, 7, 1],
             [4, 1, 0, 5, 0],
