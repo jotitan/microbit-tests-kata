@@ -78,6 +78,33 @@ class Test2 implements Test<number> {
     }
 }
 
+class Test3 implements Test<number> {
+    input: number[][]
+
+    getInput(): number[][] {
+        this.input = [];
+        for(let i = 0 ; i < 5 ; i++){
+            this.input[i] = [];
+            for (let j = 0; j < 5; j++) {
+                this.input[i].push(randint(0, 1))
+            }
+        }
+        return this.input
+    }
+
+    check(result: number): boolean {
+        let counter = 0;
+        for (let i = 0 ; i < 5 ; i++){
+            for(let j = 0 ; j < 5 ; j++){
+                if(this.input[i][j] === 1){
+                    counter += (i+1) * Math.pow(5,j);
+                }
+            }
+        }
+        return counter === result;
+    }
+}
+
 function checkTest(tester:Test<any>, data :any){
     if(tester.check(data)){
         showOK()

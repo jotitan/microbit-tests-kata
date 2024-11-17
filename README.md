@@ -57,12 +57,33 @@ checkTest(test, myFunction(test.getInput()))
 #### Description
 
 Vous recevez un tableau de 5 x 5 et devez renvoyer un tableau de même dimension mais symétrique verticalement.
-Exemple : 
-. . 1 . .       . . 1 . . 
-1 . . . .       . . . . 1
-. . . 1 .   =>  . 1 . . . 
-. . . . .       . . . . .
-. 1 . . .       . . . 1 .
+
+#### Exemple
+. . 1 . .   =>  . . 1 . .   
+1 . . . .   =>  . . . . 1  
+. . . 1 .   =>  . 1 . . .   
+. . . 1 .   =>  . 1 . . .  
+. 1 . . .   =>  . . . 1 .  
+
+### Exercice 2 : la somme
+
+#### Description
+
+Calculer la somme de toutes les cases du tableau
+
+### Exercice 3 : la puissance de 5
+
+#### Description
+Le tableau que vous recevez est une matrice où un nombre est codé en base 5
+Le poids faible est à droite.
+
+#### Exemple
+
+0 0 1 0 0  
+1 0 0 0 0  
+0 0 0 1 0 => La somme est 1 x 5^2 + 2 x 5^4 + 3 x 5^1 + 5 x 5^3 = 25 + 1250 + 15 + 625 = 1915  
+0 0 0 0 0  
+0 1 0 0 0  
 
 
 #### Métadonnées (utilisées pour la recherche, le rendu)
