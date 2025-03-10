@@ -1,3 +1,21 @@
+function show(results: any) {
+    if (Array.isArray(results)) {
+        const r = results as number[][];
+        for (let i = 0; i < r.length; i++) {
+            for (let j = 0; j < r[i].length; j++) {
+                if (r[i][j] === 0) {
+                    led.unplot(i, j)
+                } else {
+                    led.plot(i, j)
+                }
+            }
+        }
+    }
+    if (typeof results === "number") {
+        basic.showNumber(results)
+    }
+}
+
 function compare (t1: any[][], t2: any[][]) {
     if (t1.length != t2.length) {
         return false
@@ -14,21 +32,58 @@ function compare (t1: any[][], t2: any[][]) {
     }
     return true
 }
-function showOK () {
-    basic.showIcon(IconNames.Happy)
+
+const showOK = () => basic.showIcon(IconNames.Happy);
+const showKO = () => basic.showIcon(IconNames.Sad);
+
+// Used to store function implementation
+let testImplementations :any[] = [];
+
+function loadImplementations(implementations: any[]){
+    testImplementations = implementations;
 }
-function pulseBright () {
-    if (direction == 10 && brightness > 255 || direction == -10 && brightness < 10) {
-        direction *= -1;
+
+
+let currentTestNumber = -1;
+let currentTest :Test<any>;
+
+input.onButtonPressed(Button.AB,()=>{
+    currentTestNumber = (currentTestNumber + 1)%testImplementations.length;
+    currentTest = getTest();
+})
+
+input.onButtonPressed(Button.A,()=>{
+    // show input
+    if(currentTest == null){
+        basic.showIcon(IconNames.No)
+    }else{
+        show(currentTest.getInput());
     }
-    brightness += direction
-    led.setBrightness(brightness)
+})
+
+input.onButtonPressed(Button.B, () => {
+    // show result and value
+    if (currentTest != null) {
+        const results = testImplementations[currentTestNumber](currentTest.getInput());
+        show(results)
+        basic.pause(500)
+        if(currentTest.check(results)){
+            showOK();
+        }else{
+            showKO();
+        }
+    }
+})
+
+function getTest() :Test<any>{
+    switch(currentTestNumber){
+        case 0:return new Test1();
+        case 1:return new Test2();
+        case 2: return new Test3();
+    }
+    return null;
 }
-function showKO () {
-    basic.showIcon(IconNames.Sad)
-}
-let brightness = 0
-let direction = 0
+
 interface Test<Result>{
     getInput(): number[][]
     check(result: Result): boolean
@@ -112,6 +167,6 @@ function checkTest(tester:Test<any>, data :any){
         showKO()
     }
 }
-direction = 10
-brightness = 100
-pulseBright()
+
+
+//loadImplementations([()=>console.log("ok"),()=>console.log("super")]);
