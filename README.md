@@ -5,13 +5,12 @@
 
 Voici une liste de kata pour s'entrainer à utiliser une carte [microbit](https://makecode.microbit.org/)
 
-### Exercice préliminaire
+## Fonctionnement
 
-L'objectif est de configurer la carte pour lancer les tests par la suite : 
-* Ajouter une fonction pour incrémenter un compteur (tournant) de 1 à 9 lorsqu'on appuie sur le logo
-La valeur du compteur est affichée sur l'écran
-* Lors de l'appuie sur le bouton A, afficher OK {compteur}
-* Lors de l'appuie sur le bouton B, afficher Test {compteur}
+Toute la logique est déjà présente : 
+* En appuyant sur le bouton A+B, vous changez le test
+* En appuyant sur le bouton A, l'entrée du test est affichée
+* En appuyant sur le bouton B, le test est lancé, le résultat affiché
 
 ### Connecter les tests
 
@@ -22,35 +21,23 @@ Pour les lancer les tests, vous devez ajouter ce dépot en extension :
 * recherchez **https://github.com/jotitan/microbit-tests-kata** et importez
 
 Ensuite : 
-* Le logo permet toujours de choisir un des tests, de 1 à 9
-* Le bouton A permet de lancer votre fonction à partir des données de test
-* Le bouton B permet de valider votre fonction
+* Créer vos implémentations des tests
+* Initialiser les tests en appelant la fonction **loadImplementations** et en mettant en paramètre un tableau de vos fonction
 
-Exemple pour le **bouton A**
+Exemple
 ```Javascript
 
-function getTest(counter){
-    switch (counter){
-        case 1 : return new Test1();
-    }
+function doTest1(inputs){
+    // Votre code
 }
 
-function display(data: int16[][]){
-    /* Convert data in the good format : 1 is turn on, 0 is turn off */
-    basic.showLeds("")
+function doTest2(inputs){
+    // Votre code
 }
-const test = getTest(counter)
-const myData = myFunction(test.getInput());
-display(myData);
-```
 
-Exemple pour le **bouton B**
-```Javascript
-const test = getTest(counter)
-checkTest(test, myFunction(test.getInput()))
+loadImplementations([doTest1,doTest2])
+
 ``` 
-
-### Fonctionnement
 
 ### Exercice 1 : le miroir
 
